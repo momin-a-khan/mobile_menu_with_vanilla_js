@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mobile menu with vanilla js</title>
+
+  <!-- style -->
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/default.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container pt-40">
+    <div class="row">
+      <!-- menu burger start-->
+      <div class="menu-bar ">
+        <div class="menu-burger"></div>
+      </div>
+      <!-- menu burger end-->
+
+      <!-- menu item -->
+      <div class="mobile-menu">
+        <!-- close button start-->
+        <div class="menu-close-icon">
+          <button>X</button>
+        </div>
+        <!-- close button end-->
+
+        <div class="main-menu  mt-30">
+          <ul>
+            <li class="dropdown_menu">
+              <span>Home</span>
+              <ul class="sub-menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Home</a></li>
+              </ul>
+
+            </li>
+            <li class="dropdown_menu">
+              <span>Shop</span>
+              <ul class="sub-menu">
+                <li>
+                  <span>Home</span>
+                  <ul class="sub-menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Home</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Home</a></li>
+
+              </ul>
+
+            </li>
+            <li><a href="#">Page</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- js -->
+  <script>
+    var menu_open = document.querySelector('.mobile-menu'); //menu item selected
+    var menu_burger = document.querySelector(".menu-bar"); //burger menu selected
+    var close_menu = document.querySelector(".menu-close-icon button"); //close button selected
+    //menu open function
+    menu_burger.addEventListener("click", function () {
+      menu_open.classList.add("menu-open")
+    })
+    //menu close function
+    close_menu.addEventListener("click", function () {
+      menu_open.classList.remove("menu-open");
+    })
+    // dropdown menu
+    var mobileSubMenu = document.querySelectorAll(".dropdown_menu span"); //drop down menu item select
+    var i;
+
+    for (i = 0; i < mobileSubMenu.length; i++) {
+      mobileSubMenu[i].addEventListener("click", function () {
+        this.classList.toggle("sub-menu-active"); //class add in dropdown menu item
+        var panel = this.nextElementSibling;
+        // add style inline css
+        if (panel.style.display) {
+          panel.style.display = null;
+
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
